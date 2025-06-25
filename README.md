@@ -16,23 +16,28 @@ A modern React TypeScript scaffold for building decentralized applications on th
 
 ## 🚀 Quick Start
 
-\`\`\`bash
+
 # Clone the repository
+```bash
 git clone <your-repo-url>
 cd react-sui-typescript
+```
 
 # Install dependencies
+```bash
 npm install
+```
 
 # Start development server
+```bash
 npm run dev
-\`\`\`
+```
 
 Open [http://localhost:5173](http://localhost:5173) to see your app.
 
 ## 📁 Project Structure
 
-\`\`\`
+```
 ├── src/
 │   ├── components/            # React components
 │   ├── lib/smart-contract/    # Smart contract integration
@@ -51,34 +56,35 @@ Open [http://localhost:5173](http://localhost:5173) to see your app.
 ├── tsconfig.json              # TypeScript configuration
 ├── tailwind.config.js         # Tailwind configuration
 └── vite.config.ts             # Vite configuration
-\`\`\`
+```
 
 ## 🔧 Smart Contract Integration
 
 ### 1. Deploy Your Contract
 
-\`\`\`bash
+
 # Deploy to devnet
+```bash
 sui client publish --gas-budget 100000000
-\`\`\`
+```
 
 ### 2. Update Configuration
 
 Edit \`src/lib/smart-contract/config.json\`:
 
-\`\`\`json
+```json
 {
   "PACKAGE_ID": "0x_YOUR_PACKAGE_ID_HERE",
   "ADMIN_CAP": "0x_YOUR_ADMIN_CAP_HERE",
   "SHARED_OBJECT": "0x_YOUR_SHARED_OBJECT_HERE"
 }
-\`\`\`
+```
 
 ### 3. Define Types
 
 Update \`src/lib/smart-contract/types.ts\`:
 
-\`\`\`typescript
+```typescript
 export interface Item {
   id?: string
   name: string
@@ -87,13 +93,13 @@ export interface Item {
   owner: string
   isActive: boolean
 }
-\`\`\`
+```
 
 ### 4. Create Transaction Builders
 
 Update \`src/lib/smart-contract/client-transactions.ts\`:
 
-\`\`\`typescript
+```typescript
 export const clientTransactions = {
   createItem: (name: string, description: string, price: number): Transaction => {
     const transaction = new Transaction()
@@ -109,16 +115,16 @@ export const clientTransactions = {
     return transaction
   }
 }
-\`\`\`
+```
 
 ## 🔑 Environment Variables
 
 Create a \`.env.local\` file:
 
-\`\`\`bash
 # Optional: For read-only queries
+```bash
 VITE_QUERY_PRIVATE_KEY=your_private_key_here
-\`\`\`
+```
 
 ## 📦 Key Dependencies
 
@@ -133,7 +139,7 @@ VITE_QUERY_PRIVATE_KEY=your_private_key_here
 
 ## 🎯 Usage in Components
 
-\`\`\`typescript
+```typescript
 import { useSignAndExecuteTransaction } from '@mysten/dapp-kit'
 import { createItem, getItemInfo, type Item } from '@/lib/smart-contract'
 
@@ -151,39 +157,42 @@ const handleCreate = async () => {
     }
   )
 }
-\`\`\`
+```
 
 ## 🛠️ Development Scripts
 
-\`\`\`bash
+```bash
 # Development
 npm run dev          # Start development server
 npm run build        # Build for production
 npm run preview      # Preview production build
 npm run lint         # Run ESLint
 npm run type-check   # Run TypeScript compiler check
-\`\`\`
+```
 
 ## 🚀 Deployment
 
 ### Vercel (Recommended)
 
-\`\`\`bash
 # Install Vercel CLI
+```bash
 npm i -g vercel
+```
 
 # Deploy
+```bash
 vercel
-\`\`\`
+```
 
 ### Netlify
 
-\`\`\`bash
-# Build the project
-npm run build
 
+# Build the project
+```bash
+npm run build
+```
 # Deploy the dist folder to Netlify
-\`\`\`
+
 
 ### Other Platforms
 
